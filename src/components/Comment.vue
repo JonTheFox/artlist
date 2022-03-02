@@ -47,11 +47,16 @@ const props = defineProps({
 
 <style lang="scss">
 .comment.p-card {
+  margin: 8px;
   .p-card-title {
     span {
       display: flex;
       font-size: 12px;
     }
+  }
+  .p-card-footer {
+    display: flex;
+    margin-left: 55px;
   }
   .p-card-content {
     display: flex;
@@ -59,17 +64,20 @@ const props = defineProps({
     padding: 0;
 
     .p-avatar-image {
-      width: 48px;
-      min-width: 48px;
-      height: 48px;
-
       margin-right: 6px;
       padding: 2px;
+      height: 100%;
+      width: 100%;
+      max-width: 48px;
+      max-height: 48px;
+      margin: auto;
+      margin-right: 6px;
     }
 
     .comment--text {
       background: rgb(209, 255, 228);
       border-radius: 12px;
+      padding: 6px;
     }
   }
 }
