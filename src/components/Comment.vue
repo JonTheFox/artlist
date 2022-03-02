@@ -16,13 +16,12 @@
       <div class="comment--text">{{ props.text }}</div>
     </template>
     <template #footer>
-      <Button icon="pi pi-check" label="Save" />
-      <Button
-        icon="pi pi-times"
-        label="Cancel"
-        class="p-button-secondary"
-        style="margin-left: 0.5em"
-      />
+      <Button class="artlist-btn artlist-btn--like" :disabled="true">
+        Like
+      </Button>
+      <Button class="artlist-btn artlist-btn--reply" :disabled="true">
+        Reply
+      </Button>
     </template>
   </Card>
 </template>
@@ -47,11 +46,13 @@ const props = defineProps({
 
 <style lang="scss">
 .comment.p-card {
-  margin: 12px;
+  margin: 16px;
   border-radius: 6px;
-  transition: transform 0.2s;
+  transition: all 0.2s;
+  opacity: 0.85;
 
   &:hover {
+    opacity: 1;
     transform: scale(1.05);
   }
   .p-card-title {
