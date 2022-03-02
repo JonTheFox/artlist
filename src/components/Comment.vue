@@ -52,6 +52,11 @@ const props = defineProps({
   opacity: 0.85;
   max-width: 800px;
 
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
   .p-card-body {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -59,20 +64,12 @@ const props = defineProps({
     padding-left: 8px;
   }
 
-  .artlist-btn--like {
-    margin-right: 8px;
+  .artlist-btn {
+    border: none;
+    &.artlist-btn--like {
+      margin-right: 8px;
+    }
   }
-
-  &:hover {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  //   .p-card-title {
-  //     span {
-  //       display: flex;
-  //       font-size: 12px;
-  //     }
-  //   }
 
   .comment--email-and-text {
     display: flex;
