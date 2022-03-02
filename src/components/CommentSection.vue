@@ -1,17 +1,20 @@
 <template>
   <div class="hello">
     <h1>Comments</h1>
-    <div class="result" v-for="comment in comments" :key="comment.id">
-      <div>{{ comment.email }}</div>
-      <div>{{ comment.id }}</div>
-      <div>{{ comment.body }}</div>
-    </div>
+
+    <Comment
+      v-for="comment in comments"
+      :key="comment.id"
+      :email="comment.email"
+      :text="comment.body"
+    />
     <InfiniteLoading :comments="comments" @infinite="loadComments" />
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import Comment from "./Comment";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
 
@@ -28,6 +31,9 @@ async function loadComments(infiniteScroll) {
         pageNum.value
     );
     const newComments = await response.json();
+
+    //replace icons
+    // replace the css class
 
     if (newComments.length < 10) setIsComplete();
     else {
