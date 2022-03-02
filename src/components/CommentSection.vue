@@ -1,15 +1,14 @@
 <template>
   <div class="comment-section">
-    <Card>
-      <h1>Users' Comments</h1>
+    <h1>Users' Comments</h1>
 
-      <Comment
-        v-for="comment in comments"
-        :key="comment.id"
-        :email="comment.email"
-        :text="comment.body" />
-      <InfiniteLoading :comments="comments" @infinite="loadComments"
-    /></Card>
+    <Comment
+      v-for="comment in comments"
+      :key="comment.id"
+      :email="comment.email"
+      :text="comment.body"
+    />
+    <InfiniteLoading :comments="comments" @infinite="loadComments" />
   </div>
 </template>
 
@@ -19,7 +18,6 @@ import Comment from "./Comment";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
 
-const comment = "yo";
 const comments = ref([]);
 const pageNum = ref(1);
 const MAX_NUM_COMMENTS_IN_PAGE = 10;
@@ -32,27 +30,33 @@ async function loadComments(infiniteScroll) {
         pageNum.value
     );
     const newComments = await response.json();
-
-    //replace icons
-    // replace the css class
-
-    if (newComments.length < 10) setIsComplete();
-    else {
+    if (newComments.length < 10) {
+      setIsComplete();
+    } else {
       comments.value.push(...newComments);
       setIsLoaded();
     }
+
     pageNum.value++;
   } catch (error) {
-    console.log("***** error in loadComments(): ", error);
+    console.log("Error in loadComments(): ", error);
   }
 }
 </script>
 
 <style lang="scss">
-.comment-section {
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-right: 8px;
-  padding-left: 8px;
+@media only screen and (min-width: 601px) {
+  .comment-section {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .comment-section {
+    padding: 0;
+  }
 }
 </style>
