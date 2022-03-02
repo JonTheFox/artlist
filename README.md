@@ -1,34 +1,19 @@
 # comments
 
-## Project setup
-```
+Hi :)
+
+This is my little comments page. It implements lazy-loading comments fetched from the JSONPlaceholder and presents them using infinite-scroll mechanism.
+
+You might notice that it looks a little different in small screens (mobile-size) and larger. The differences are subtle, but they are there:)
+
+Feel free to clone this repo.
+Then, all you need to do is: 
+
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
 yarn serve
-```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+and voila!
 
-### Run your unit tests
-```
-yarn test:unit
-```
+Cheers,
 
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Jonathan Weiss
