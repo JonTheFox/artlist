@@ -4,6 +4,7 @@
     <div class="result" v-for="comment in comments" :key="comment.id">
       <div>{{ comment.email }}</div>
       <div>{{ comment.id }}</div>
+      <div>{{ comment.body }}</div>
     </div>
     <InfiniteLoading :comments="comments" @infinite="loadComments" />
   </div>
@@ -14,6 +15,7 @@ import { ref } from "vue";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
 
+const comment = "yo";
 const comments = ref([]);
 const pageNum = ref(1);
 const MAX_NUM_COMMENTS_IN_PAGE = 10;
