@@ -1,7 +1,6 @@
 <template>
   <div class="comment-section">
-    <h1>Users' Comments</h1>
-
+    <h1 class="comment-section--title">Users' Comments</h1>
     <Comment
       v-for="comment in comments"
       :key="comment.id"
@@ -45,18 +44,21 @@ async function loadComments(infiniteScroll) {
 </script>
 
 <style lang="scss">
-@media only screen and (min-width: 601px) {
-  .comment-section {
-    padding-top: 16px;
-    padding-bottom: 16px;
-    padding-right: 8px;
-    padding-left: 8px;
-  }
-}
-
 @media only screen and (max-width: 600px) {
   .comment-section {
     padding: 0;
+    .comment-section--title {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .comment-section {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 16px;
+    padding-left: 16px;
   }
 }
 </style>
