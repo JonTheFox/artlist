@@ -7,7 +7,7 @@
       :email="comment.email"
       :text="comment.body"
     />
-    <InfiniteLoading :comments="comments" @infinite="loadComments" />
+    <InfiniteLoading :comments="comments" @infinite="handleScroll" />
   </div>
 </template>
 
@@ -16,30 +16,28 @@ import { ref } from "vue";
 import Comment from "./Comment";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
+import loadComments from "../ajax/loadComments.js";
 
 const comments = ref([]);
 const pageNum = ref(1);
 const MAX_NUM_COMMENTS_IN_PAGE = 10;
 
-async function loadComments(infiniteScroll) {
-  const { loaded: setIsLoaded, complete: setIsComplete } = infiniteScroll;
-  try {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/comments?_limit=${MAX_NUM_COMMENTS_IN_PAGE}&_page=` +
-        pageNum.value
-    );
-    const newComments = await response.json();
-    if (newComments.length < 10) {
-      setIsComplete();
-    } else {
-      comments.value.push(...newComments);
-      setIsLoaded();
-    }
+async function handleScroll(infiniteScroll) {
+  const newComments = await loadComments({
+    numCommentsInPage: MAX_NUM_COMMENTS_IN_PAGE,
+    pageNum: pageNum.value,
+  });
 
-    pageNum.value++;
-  } catch (error) {
-    console.log("Error in loadComments(): ", error);
+  const { loaded: setIsLoaded, complete: setIsComplete } = infiniteScroll;
+
+  if (newComments.length < MAX_NUM_COMMENTS_IN_PAGE) {
+    setIsComplete();
+  } else {
+    comments.value.push(...newComments);
+    setIsLoaded();
   }
+
+  pageNum.value++;
 }
 </script>
 
