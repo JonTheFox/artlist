@@ -1,10 +1,12 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <comment-section />
   </div>
-  <router-view />
 </template>
+
+<script setup>
+import CommentSection from "./components/CommentSection.vue";
+</script>
 
 <style lang="scss">
 #app {
