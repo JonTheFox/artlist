@@ -1,29 +1,19 @@
 <template>
-  <Card>
-    <template #header>
-      <div class="col-12 md:col-4">
-        <div class="card">
-          <Avatar icon="pi pi-user" class="mr-2" size="xlarge" shape="circle" />
-          <Avatar
-            icon="pi pi-user"
-            class="mr-2"
-            size="large"
-            style="background-color: #2196f3; color: #ffffff"
-            shape="circle"
-          />
-          <Avatar
-            icon="pi pi-user"
-            class="mr-2"
-            style="background-color: #9c27b0; color: #ffffff"
-            shape="circle"
-          />
-        </div>
-      </div>
+  <Card class="comment">
+    <template #title>
+      <span>{{ props.email }}</span>
     </template>
-
     <template #content>
-      <div>{{ props.email }}</div>
-      <div>{{ props.text }}</div>
+      <Avatar
+        :image="
+          props.img ||
+          'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'
+        "
+        class="comment--avatar mr-2"
+        size="xlarge"
+        shape="circle"
+      />
+      <div class="comment--text">{{ props.text }}</div>
     </template>
     <template #footer>
       <Button icon="pi pi-check" label="Save" />
@@ -48,10 +38,39 @@ const props = defineProps({
     type: String,
     default: "",
   },
-
   text: {
     type: String,
     default: "",
   },
 });
 </script>
+
+<style lang="scss">
+.comment.p-card {
+  .p-card-title {
+    span {
+      display: flex;
+      font-size: 12px;
+    }
+  }
+  .p-card-content {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+
+    .p-avatar-image {
+      width: 48px;
+      min-width: 48px;
+      height: 48px;
+
+      margin-right: 6px;
+      padding: 2px;
+    }
+
+    .comment--text {
+      background: rgb(209, 255, 228);
+      border-radius: 12px;
+    }
+  }
+}
+</style>
