@@ -1,7 +1,7 @@
 <template>
   <Card class="comment">
     <template #title>
-      <span>{{ props.email }}</span>
+      <span class="comment--email">{{ props.email }}</span>
     </template>
     <template #content>
       <Avatar
@@ -47,7 +47,13 @@ const props = defineProps({
 
 <style lang="scss">
 .comment.p-card {
-  margin: 8px;
+  margin: 12px;
+  border-radius: 6px;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
   .p-card-title {
     span {
       display: flex;
