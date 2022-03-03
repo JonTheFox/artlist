@@ -11,9 +11,11 @@
       v-model="fieldValue"
       @input="handleInput"
     />
-    <small id="username2-help" class="p-error" v-if="!fieldValue"
-      >Please enter your {{ props.name }}</small
-    >
+    <div class="error-container">
+      <small :id="`${props.name}-help`" class="p-error" v-if="!fieldValue"
+        >Please enter your {{ props.name }}</small
+      >
+    </div>
   </div>
 </template>
 
@@ -37,3 +39,27 @@ const props = defineProps({
   },
 });
 </script>
+
+<style lang="scss">
+.field {
+  display: flex;
+  flex-direction: row;
+  padding-left: 16px;
+  margin-bottom: 8px;
+
+  .error-container {
+    display: flex;
+
+    small {
+      margin: auto 8px;
+    }
+  }
+
+  label {
+    margin-right: 8px;
+    min-width: 50px;
+    margin: auto 0;
+    text-align: left;
+  }
+}
+</style>
