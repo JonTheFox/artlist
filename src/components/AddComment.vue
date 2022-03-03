@@ -1,7 +1,7 @@
 <template>
   <div class="add-comment">
-    <InputField name="email" />
-    <InputField name="comment" />
+    <InputField name="email" @input="handleInput($event, 'email')" />
+    <InputField name="text" @input="handleInput($event, 'text')" />
     <button class="btn btn--submit" @click="addComment">Submit</button>
   </div>
 </template>
@@ -17,8 +17,18 @@ const commentBody = ref("");
 const commentEmail = ref("");
 const commentImgUrl = ref("");
 
-function handleInput({ data }, fieldName) {
-  commentEmail.value = data;
+function handleInput({ fieldName = "", value = "" }) {
+  debugger;
+  switch (fieldName) {
+    case "email":
+      commentEmail.value = value;
+      break;
+    case "text":
+      commentBody.value = value;
+      break;
+    default:
+      return;
+  }
 }
 
 function addComment() {

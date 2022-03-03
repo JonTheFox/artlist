@@ -1,13 +1,15 @@
 <template>
   <div :class="`field ${props.name || 'unnamed'}-field`">
-    <label for="username2">{{ props.name || "" }}</label>
+    <label :for="props.name">
+      {{ props.name || "" }}
+    </label>
     <InputText
-      :id="`${name}`"
+      :id="props.name"
       type="text"
       :aria-describedby="`${name}-help`"
       :class="[`field ${name}-field`, !fieldValue && 'p-invalid']"
       v-model="fieldValue"
-      @input="emit($event, 'input')"
+      @input="handleInput"
     />
     <small id="username2-help" class="p-error" v-if="!fieldValue"
       >Please enter your {{ props.name }}</small
@@ -22,6 +24,12 @@ import { defineEmits, defineProps, ref } from "vue";
 const fieldValue = ref("");
 
 const emit = defineEmits(["input"]);
+
+function handleInput(event) {
+  const text = event.data;
+  //   fieldValue.value = text;
+  emit("input", { value: text, fieldName: props.name });
+}
 
 const props = defineProps({
   name: {
