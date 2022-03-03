@@ -13,10 +13,10 @@
 
 <script setup>
 import { ref } from "vue";
-import Comment from "./Comment";
+import Comment from "@/components/Comment";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
-import loadComments from "../ajax/loadComments.js";
+import loadComments from "@/ajax/loadComments.js";
 
 const comments = ref([]);
 const pageNum = ref(1);
