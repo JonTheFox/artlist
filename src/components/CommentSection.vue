@@ -20,7 +20,7 @@ import loadComments from "../ajax/loadComments.js";
 
 const comments = ref([]);
 const pageNum = ref(1);
-const MAX_NUM_COMMENTS_IN_PAGE = 10;
+const MAX_NUM_COMMENTS_IN_PAGE = 20;
 
 async function handleScroll(infiniteScroll) {
   const newComments = await loadComments({
