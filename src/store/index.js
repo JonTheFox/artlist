@@ -1,14 +1,10 @@
 import { createStore } from "vuex";
 import modules from "@/store/index.js";
+import mutations from "@/store/index.js";
 
 const store = createStore({
   modules,
-  mutations: {
-    addComment(state, { comment }) {
-      debugger;
-      state.comments.push(comment);
-    },
-  },
+  mutations,
 });
 
 export default store;
