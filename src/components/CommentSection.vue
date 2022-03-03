@@ -1,13 +1,8 @@
 <template>
   <div class="comment-section">
     <h1 class="comment-section--title">Users' Comments</h1>
-    <AddComment></AddComment>
-    <Comment
-      v-for="comment in comments"
-      :key="comment.id"
-      :email="comment.email"
-      :text="comment.body"
-    />
+    <AddComment />
+    <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
     <InfiniteLoading :comments="comments" @infinite="handleScroll" />
   </div>
 </template>

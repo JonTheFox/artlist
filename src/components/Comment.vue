@@ -11,8 +11,8 @@
         shape="circle"
       />
       <div class="comment--email-and-text">
-        <span class="comment--email">{{ props.email }}</span>
-        <div class="comment--text">{{ props.text }}</div>
+        <span class="comment--email">{{ props.comment?.email }}</span>
+        <div class="comment--text">{{ props.comment?.body }}</div>
       </div>
     </template>
     <template #footer>
@@ -33,13 +33,19 @@ import Avatar from "primevue/avatar";
 import AvatarGroup from "primevue/avatargroup";
 
 const props = defineProps({
-  email: {
-    type: String,
-    default: "",
-  },
-  text: {
-    type: String,
-    default: "",
+  comment: {
+    email: {
+      type: String,
+      default: "",
+    },
+    body: {
+      type: String,
+      default: "",
+    },
+    id: {
+      type: String,
+      default: "",
+    },
   },
 });
 </script>
