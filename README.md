@@ -10,8 +10,11 @@ You might notice that the page looks a little bit different in small screens (mo
 Feel free to clone this repo.
 Then, all you need to do is run 
 
-yarn install
-yarn serve
+yarn && yarn serve
+
+or
+
+npm install && npm run serve
 
 and voila!
 
