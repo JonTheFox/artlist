@@ -1,6 +1,8 @@
 <template>
   <div class="add-comment">
-    <InputText type="text" v-model="commentText" />
+    <InputText type="text" v-model="commentBody" />
+    <InputText type="text" v-model="commentEmail" />
+    <InputText type="text" v-model="commentImgUrl" />
     <button class="btn btn--submit" @click="addComment">Submit</button>
   </div>
 </template>
@@ -11,10 +13,16 @@ import { useStore } from "vuex";
 
 const store = useStore();
 
-const commentText = ref("");
+const commentBody = ref("");
+const commentEmail = ref("");
+const commentImgUrl = ref("");
 
 function addComment() {
-  store.dispatch("addComment", commentText.value);
+  store.dispatch("comments/addComment", {
+    body: commentBody.value,
+    email: commentEmail.value,
+    img: commentImgUrl.value,
+  });
 }
 </script>
 

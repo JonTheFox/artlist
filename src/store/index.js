@@ -1,10 +1,9 @@
 import { createStore } from "vuex";
-import modules from "@/store/index.js";
-import mutations from "@/store/index.js";
+import commentsModule from "@/store/modules/comments/index.js";
 
 const store = createStore({
-  modules,
-  mutations,
+  modules: { comments: commentsModule },
+  strict: true,
 });
 
 export default store;
