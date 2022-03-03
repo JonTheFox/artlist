@@ -1,11 +1,13 @@
 import * as types from "./mutationTypes";
 
-const addComment = ({ commit, state, getters }, comment) => {
-  const allComments = getters["comments"];
-  const updatedComments = [comment, ...allComments];
-  commit(types.SET_COMMENTS, updatedComments);
+const addComments = ({ commit }, comments) => {
+  commit(types.ADD_COMMENTS, comments);
+};
+const addComment = ({ commit }, newComment) => {
+  commit(types.ADD_COMMENT, newComment);
 };
 
 export default {
+  addComments,
   addComment,
 };

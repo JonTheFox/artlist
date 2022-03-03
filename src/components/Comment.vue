@@ -3,7 +3,7 @@
     <template #content>
       <Avatar
         :image="
-          props.img ||
+          props.comment?.img ||
           'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'
         "
         class="comment--avatar"
@@ -29,6 +29,7 @@
 <script setup>
 import { defineProps } from "vue";
 import Card from "primevue/card";
+import Button from "primevue/button";
 import Avatar from "primevue/avatar";
 import AvatarGroup from "primevue/avatargroup";
 
@@ -51,6 +52,8 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
+$color_green: rgb(209, 255, 228);
+
 // for screens larger than mobile (tablets, laptops, desktops, etc.)
 @media only screen and (min-width: 601px) {
   .comment.p-card {
@@ -87,6 +90,8 @@ const props = defineProps({
 
   .artlist-btn {
     border: none;
+    background: transparent;
+    color: gray;
     &.artlist-btn--like {
       margin-right: 8px;
     }
@@ -124,7 +129,7 @@ const props = defineProps({
     }
 
     .comment--text {
-      background: rgb(209, 255, 228);
+      background: $color_green;
       border-radius: 12px;
       padding: 6px;
     }

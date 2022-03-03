@@ -3,19 +3,20 @@
     <h1 class="comment-section--title">Users' Comments</h1>
     <AddComment />
     <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
-    <InfiniteLoading :comments="comments" @infinite="handleScroll" />
+    <InfiniteLoading @infinite="handleScroll" />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import Comment from "@/components/Comment";
 import AddComment from "@/components/AddComment";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
 import loadComments from "@/ajax/loadComments.js";
+import store from "../store";
 
-const comments = ref([]);
+const comments = computed(() => store.state.comments.comments);
 const pageNum = ref(1);
 const MAX_NUM_COMMENTS_IN_PAGE = 20;
 
@@ -30,7 +31,7 @@ async function handleScroll(infiniteScroll) {
   if (newComments.length < MAX_NUM_COMMENTS_IN_PAGE) {
     setIsComplete();
   } else {
-    comments.value.push(...newComments);
+    store.dispatch("comments/addComments", newComments);
     setIsLoaded();
   }
 
