@@ -1,6 +1,7 @@
 <template>
   <div class="comment-section">
     <h1 class="comment-section--title">Users' Comments</h1>
+    <AddComment></AddComment>
     <Comment
       v-for="comment in comments"
       :key="comment.id"
@@ -14,6 +15,7 @@
 <script setup>
 import { ref } from "vue";
 import Comment from "@/components/Comment";
+import AddComment from "@/components/AddComment";
 import InfiniteLoading from "v3-infinite-loading";
 import "v3-infinite-loading/lib/style.css";
 import loadComments from "@/ajax/loadComments.js";
