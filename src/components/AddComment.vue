@@ -40,4 +40,10 @@ function addComment() {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.field {
+  label {
+    margin-right: 8px;
+  }
+}
+</style>

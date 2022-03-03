@@ -26,8 +26,7 @@ const fieldValue = ref("");
 const emit = defineEmits(["input"]);
 
 function handleInput(event) {
-  const text = event.data;
-  //   fieldValue.value = text;
+  const text = event.target.value;
   emit("input", { value: text, fieldName: props.name });
 }
 
